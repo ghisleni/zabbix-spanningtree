@@ -1,0 +1,32 @@
+zabbix_export:
+  version: "7.2"
+  template_groups:
+    - uuid: 40cde20d83dd444bbb7cd445a258bf1b
+      name: "Template/Custom"
+  templates:
+    - uuid: cf62dde094ea44b5af3e42c916428fe8
+      template: "HPE Switch Spanning Tree"
+      name: "HPE Switch Spanning Tree"
+      description: "##SNMP template to monitor spanning tree on switch ports."
+      groups:
+        - name: "Template/Custom"
+      items:
+        - uuid: 9ca9fdb6d9674671a68661e5a79dc310
+          name: "Port State"
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.11.2.14.3.6.15.2
+          key: portState
+          delay: 30s
+          history: 30d
+          trends: "0"
+          value_type: FLOAT
+
+        - uuid: 5b7cf593f9f549fbad3a70f39bdf6a68
+          name: "Port ID"
+          type: SNMP_AGENT
+          snmp_oid: 1.3.6.1.4.1.11.2.14.3.6.15.3
+          key: portId
+          delay: 30s
+          history: 30d
+          trends: "0"
+          value_type: FLOAT
